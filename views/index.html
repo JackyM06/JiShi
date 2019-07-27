@@ -1,0 +1,115 @@
+{{ extend './_layout/home.html'}}
+
+{{block 'title'}}记时-记下美好时光{{/block}}
+
+{{block 'body'}}
+    {{ include './_partials/header.html' }}
+    <!-- 主体部分 -->
+    <div class="body">
+        <!-- 左部文章列表栏部分 -->
+        <div class="SiteL">
+            <!-- 轮播部分 -->
+            <div class="slick">
+                <div><a href="/article?articleId=5d39a84fc39a221d14d91b15"><img src="/public/img/01.png" alt=""></a></div>
+                <div><a href="/article?articleId=5d39a5e8c39a221d14d91b14"><img src="/public/img/02.jpg" alt=""></a></div>
+            </div>
+            <!-- 推荐文章列表 -->
+            <ul class="BlogList" id="bl">
+                {{ each articles }}
+                <li>
+                    <a class="title" href="/article?articleId={{@ $value._id }}">{{ $value.title }}</a>
+                    <span class="intrudation">
+                        {{ $value.Introduction }}
+                    </span>
+                    <div class="otherMessage">
+                        <a class="editor" href="/user?nickname={{ $value.nickname }}">{{ $value.nickname }}</a>
+                        <a class="comment fa fa-comment" aria-hidden="trfue">{{ $value.commentID.length }}</a>
+                        <span class="like fa fa-gratipay" aria-hidden="true">{{ $value.LikeID.length }}</span>
+                        <span class="time">{{ $value.lastTime.getFullYear()+'年'+($value.lastTime.getMonth()+1)+'月'+$value.lastTime.getDate()+'日' }}</span>
+                    </div>
+                </li>
+                {{ /each }}
+            </ul>
+            <button class="more" onclick="getMore()">阅读更多</button>
+            
+            <div class="about">
+                <!-- <span>制作人员:</span>
+                <a class="fa fa-grav" aria-hidden="true" target="_blank" href="javascript:void();">江永旭</a>
+                <a class="fa fa-grav" aria-hidden="true" target="_blank" href="https://limjk.tech/">毛建凯</a> -->
+                <p> Copyright © 2019 探索·永无止境</p>
+            </div>
+        </div>
+        <!-- 右侧推荐栏部分 -->
+        <div class="SiteR">
+            <ul class="ExcList">
+                <li><a class="E1" href="javascript:void();">7日热门 <span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
+                <li><a class="E2" href="javascript:void();">30日热门 <span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
+                <li><a class="E3" href="javascript:void();">优选连载 <span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
+                <li><a class="E4" href="javascript:void();">优质Blog <span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
+                <li><a class="E5" href="javascript:void();">Blog入门 <span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
+                <li><a class="E6" href="javascript:void();">使用帮助 <span class="fa fa-arrow-right" aria-hidden="true"></span></a></li>
+            </ul>
+            <ul class="ExcAuther">
+                <div class="front">
+                    <span>推荐作者</span>
+                    <button > <span id="log" class="fa fa-refresh" aria-hidden="true"></span>换一批</button>
+                </div>
+                <li>
+                    <img src="https://upload.jianshu.io/users/upload_avatars/3292545/78f2855a-80fd-419a-9fb2-1aeed39690f0.png?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp" alt="">
+                    <a href="javascript:void();">北美之美</a>
+                    <p class="personMessage">写了420k字 · 22.4k喜欢</p>
+                    <button class="get fa fa-plus-square-o">关注</button>
+                </li>
+                <li>
+                    <img src="https://upload.jianshu.io/users/upload_avatars/13213889/7314c5cc-ca7f-4542-b914-2c8dffaf324d.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp" alt="">
+                    <a href="javascript:void();">无限猴子</a>
+                    <p class="personMessage">写了242.3k字 · 1k喜欢</p>
+                    <button class="get fa fa-plus-square-o">关注</button>
+                </li>
+                <li>
+                    <img src="https://upload.jianshu.io/users/upload_avatars/5545154/1a3d5ed6-9ad1-44b3-9457-3e6a29dd1b71.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp" alt="">
+                    <a href="javascript:void();">徐林Grace</a>
+                    <p class="personMessage">写了686.8k字 · 5.5k喜欢</p>
+                    <button class="get fa fa-plus-square-o">关注</button>
+                </li>
+                <li>
+                    <img src="https://upload.jianshu.io/users/upload_avatars/5205317/1179d71b-e7c6-4023-89e8-bba25f88272b.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp" alt="">
+                    <a href="javascript:void();">遛遛心情的溜妈</a>
+                    <p class="personMessage">写了623.9k字 · 22.6k喜欢</p>
+                    <button class="get fa fa-plus-square-o">关注</button>
+                </li>
+                <li>
+                    <img src="https://upload.jianshu.io/users/upload_avatars/6305091/dc5b863a-26fc-47df-af32-18177f6cc9ff.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/96/h/96/format/webp" alt="">
+                    <a href="javascript:void();">只有一半影子的人</a>
+                    <p class="personMessage">写了261.5k字 · 1k喜欢</p>
+                    <button class="get fa fa-plus-square-o">关注</button>
+                </li>
+            </ul>
+        </div>
+        <a class="up fa fa-arrow-up" href="#" id="GoTop"></a>
+    </div>
+    <a class="up fa fa-arrow-up" href="#" id="GoTop"></a>
+{{/block}}
+
+
+{{block 'script'}}
+<script src="/public/lib/slick/slick.min.js"></script>
+<script type="text/javascript" src="/public/JavaScript/index.js"></script>
+<script src="/public/lib/etc/template-web.js"></script>
+<script id="bloglist" type="text/html">
+    <% for(var i = 0 ; i < articles.length ; i ++) {%>
+    <li>
+        <a class="title haveImg" href="article?articleId=<%= articles[i]._id %>"><%= articles[i].title %></a>
+        <span class="intrudation haveImg">
+            <%= articles[i].Introduction %>
+        </span>
+        <div class="otherMessage">
+            <a class="editor" href="/user?nickname='<%= articles[i].nickname %>'"><%= articles[i].nickname %></a>
+            <a class="comment fa fa-comment" aria-hidden="trfue"><%= articles[i].commentID.length %></a>
+            <span class="like fa fa-gratipay" aria-hidden="true"><%= articles[i].LikeID.length %></span>
+        </div>
+    </li>
+    <%};%>
+</script>
+
+{{/block}}

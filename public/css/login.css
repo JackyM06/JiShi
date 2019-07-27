@@ -1,0 +1,129 @@
+ul, li{list-style: none;}
+body, p, h1, h2, h3, h4, img, div, span, ul, li{margin: 0;padding: 0;}
+a,a:hover,a:visited,a:active{text-decoration: none;color: #333333;}
+*{
+  font-size:微软雅黑;
+}
+.loginBox{
+    width: 100%;
+    background-color: #f1f1f1;
+}
+body{
+    position: relative;
+    box-sizing: border-box;
+}
+#home{
+    display: block;
+    left: 50px;
+    top: 50px;
+    position: absolute;
+    color: #0078D7;
+    font-size: 2.8em;
+    height: 60px;
+    line-height: 60px;
+    letter-spacing: 5px;
+}
+.messageBox{
+    width: 20%;
+    position: absolute;
+    top: 20%;
+    left: 35%;;
+    padding: 50px 50px 30px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(0,0,0,.1);
+    vertical-align: middle;
+    display: block;
+}
+.title{
+    color: #969696;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+}
+.title a{
+    font-weight: normal;
+    display: inline-block;
+    padding: 10px 10px;
+    font-size: 1.2em;
+    color: #969696;
+    border-bottom:  2px solid #ffffff;
+}
+
+.title .choice{
+    font-weight: bolder;
+    color: #0078D7;
+    border-bottom: 2px solid #0078D7;
+}
+.title a:hover{
+    border-bottom:  2px solid #0078D7;
+}
+.text{
+    width: 86%;
+    margin: 0 auto;
+    border: 1px solid #C8C8C8;
+    font-size: 1.2em;
+    padding: 10px 5px;
+    background-color: #F7F7F7;
+    color: #969696;
+}
+.text input{
+    margin-left: 5px;
+    border: none;
+    outline: medium;
+    width: 85%;
+    background-color: #F7F7F7;
+}
+#id,#name{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom: none;
+}
+#telephoneNum{
+    border-bottom: none;
+}
+#passworld{
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+.remenberMe{
+    width: 100%;
+    padding: 20px 10px;
+    color: #969696;
+    font-size: 0.9em;
+}
+.remenberMe a{
+    float: right;
+    margin-right: 20px;
+    color: #969696;
+}
+
+.submit{
+    width: 240px;
+    height: 40px;
+    background-color: #0078D7;
+    color: #fff;
+    text-align: center;
+    border: none;
+    outline: medium;
+    display: block;
+    margin: 20px auto;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#Login{
+    display: block;
+}
+#Register{
+    display: none;
+}
+#warning{
+    width: 240px;
+    text-align: center;
+    color: #969696;
+    font-size: 0.7em;
+    margin: 0 auto;
+}

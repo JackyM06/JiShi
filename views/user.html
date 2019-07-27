@@ -1,0 +1,100 @@
+{{ extend './_layout/home.html' }}
+
+{{block 'title'}}{{ writer.nickname }}的主页{{/block}}
+
+{{block 'body'}}
+
+{{ include './_partials/header.html'}}
+
+<div class="body">
+    <div class="SiteL">
+        <div class="ManInfo">
+            <a id="Head" class="head" href="##"><img src="/public/img/admin.png"  alt=""></a>
+            <div class="info">
+                <a id="name" href="##">{{ writer.nickname }}</a>
+                <ul class="infoList">
+                    <li>
+                       <a class="FlowCount" href="##">
+                            <span>{{  writer.follows.length }}</span>
+                            <p>关注<span class="fa fa-angle-right"></span> </p>
+                       </a> 
+                    </li>
+                    <li>
+                        <a class="FansCount" href="##">
+                             <span>{{ writer.fans.length }}</span>
+                             <p>粉丝<span class="fa fa-angle-right"></span> </p>
+                        </a> 
+                     </li>
+                     <li>
+                        <a class="ContentCount" href="##">
+                             <span>{{ articles.length }}</span>
+                             <p>文章<span class="fa fa-angle-right"></span> </p>
+                        </a> 
+                     </li>
+                     <li>
+                        <a class="LikeCount" href="##">
+                             <span>{{ likeCount }}</span>
+                             <p>收获喜欢</p>
+                        </a> 
+                     </li>
+                </ul>
+            </div>
+        </div>
+        <div class="mian">
+            <ul class="menuList">
+                <li class="choice"><a href="##"><span class="fa fa-file-text"></span>文章</a></li>
+                <li><a href="##"><span class="fa fa-bell"></span>动态</a></li>
+                <li><a href="##"><span class="fa fa-comments"></span>最新评论</a></li>
+                <li><a href="##"><span class="fa fa-codiepie"></span>热门</a></li>
+            </ul>
+            <ul class="BlogList">
+                {{ each articles }}
+                <li>
+                    <a class="title haveImg" href="/article?articleId={{@ $value._id }}">{{ $value.title }}</a>
+                    <span class="intrudation haveImg">
+                        {{ $value.Introduction }}
+                    </span>
+                    <div class="otherMessage">
+                        <a class="comment fa fa-comment" aria-hidden="trfue" href="javascript:void();">{{ $value.commentID.length }}</a>
+                        <span class="like fa fa-gratipay" aria-hidden="true">{{ $value.LikeID.length }}</span>
+                        <span class="time">{{ $value.lastTime.getFullYear()+'年'+($value.lastTime.getMonth()+1)+'月'+$value.lastTime.getDate()+'日' }}</span>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    {{ if myself }}
+    <div class="SiteR">
+        <div class="userMessage">
+            <p class="gg">个人介绍</p>
+            <a id="edit" href="javascript:void();"><span class="fa fa-pencil"></span>编辑</a></br></br>
+            <p id="showInfo">{{user.userInfo}}</p>
+            <form action="/user/update" method="POST" id="userInfo">
+                <textarea name="userInfo" id="InfoText" cols="30" rows="5"></textarea>
+                <input type="submit" id="submit" value="确定">
+                <a id="cancel" href="javascript:void();">取消</a>
+            </form>
+        </div>
+        <div class="userMessage">
+            <a href="javascript:void();"><span class="fa fa-heart-o"></span>我喜欢的文章</a>
+        </div>
+    </div>
+    {{ else }}
+    <div class="SiteR">
+        <div class="userMessage">
+            <p class="gg">个人介绍</p></br></br>
+            <p id="showInfo">{{writer.userInfo}}</p>
+        </div>
+        <div class="userMessage">
+            <a href="javascript:void();"><span class="fa fa-heart-o"></span>Ta喜欢的文章</a>
+        </div>
+    </div>
+    {{/if}}
+</div>
+{{/block}}
+
+{{block 'script'}}
+<script type="text/javascript" src="/public/JavaScript/index.js"></script>
+<script src="/public/JavaScript/user.js"></script>
+{{/block}}

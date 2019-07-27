@@ -1,0 +1,76 @@
+   <!-- 导航栏部分 -->
+<div class="NavBar">
+    <a id="home" href="/"><img src="/public/img/logo.png" alt=""></a>
+    <ul class="left">
+        <li><a class="choice"  href="/">发现</a></li>
+        <li><a href="/follow">关注</a></li>
+        <li class="subNav">
+            <a href="/news">消息</a>
+            <ul class="list">
+                <li><a href="javascript:void();"><span class="fa fa-commenting-o" aria-hidden="true"></span> 评论</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-envelope-o" aria-hidden="true"></span>信稿</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-pencil-square-o" aria-hidden="true"></span>投稿请求</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-heart-o" aria-hidden="true"></span>喜欢和赞</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-user-o" aria-hidden="true"></span>关注</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-jpy" aria-hidden="true"></span>赞赏和付费</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-hdd-o" aria-hidden="true"></span>其他</a></li>
+            </ul>
+        </li>
+        <form action="" class="search">
+            <input id="inputSearch" type="text" placeholder="搜索">
+            <button onclick="search()"><span class="fa fa-search" aria-hidden="true"></span></button>
+            <span id="short1" class="fa fa-sort-asc" aria-hidden="true"></span>
+            <ul class="cardbox">
+                <div class="front">
+                    <span>热门搜索</span>
+                    <button onclick="replace()"> <span id="log" class="fa fa-refresh" aria-hidden="true"></span>换一批</button>
+                </div>
+                <li><a href="javascript:void();">区块链</a></li>
+                <li><a href="javascript:void();">小程序</a></li>
+                <li><a href="javascript:void();">vue</a></li>
+                <li><a href="javascript:void();">毕业</a></li>
+                <li><a href="javascript:void();">PHP</a></li>
+                <li><a href="javascript:void();">故事</a></li>
+                <li><a href="javascript:void();">理财</a></li>
+                <li><a href="javascript:void();">Vlog</a></li>
+                <li><a href="javascript:void();">投稿作品</a></li>
+                <li><a href="javascript:void();">Vscode</a></li>
+                <li><a href="javascript:void();">心理</a></li>
+                <li><a href="javascript:void();">夜间睡眠</a></li>
+                <li><a href="javascript:void();">手账</a></li>
+                <li><a href="javascript:void();">姥姥的澎湖湾</a></li>
+                <li><a href="javascript:void();">显示器</a></li>
+                <li><a href="javascript:void();">软件开发</a></li>
+            </ul>
+        </form>
+    </ul>
+    <div class="right">
+        <button onclick="fontshow()" onblur="fontoff()" class="font"><i class="fa fa-font" aria-hidden="true">a</i>
+            <span id="short2" class="fa fa-sort-asc" aria-hidden="true"></span>
+            <ul class="switch">
+                <div id="Day&Night"><span class="night fa fa-moon-o" aria-hidden="true">夜间模式</span> <a class="switchB switch-on">开</a><a class="switchB switch-off choice">关</a></div>
+                <li id="FontName"><a class="switchB switch-on">宋体</a><a class="switchB switch-off choice">黑体</a></li>
+                <li id="ChineseFront"><a class="switchB switch-on choice">简</a><a class="switchB switch-off" >繁</a></li>
+            </ul>
+        </button>
+        {{if user}}
+        <li class="subNav teshu logined">
+            <a class="head" href="/user?nickname={{ user.nickname }}"><img src="/public/img/admin.png" alt=""><span class="fa fa-sort-desc" aria-hidden="true"></span></a>
+            <ul class="list">
+                <li><a href="/user?nickname={{ user.nickname }}"><span class="fa fa-user" aria-hidden="true"></span>我的主页</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-bookmark" aria-hidden="true"></span>收藏的文章</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-heart" aria-hidden="true"></span>喜欢的文章</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-shopping-cart" aria-hidden="true"></span>已购内容</a></li>
+                <li><a href="javascript:void();"><span class="fa fa fa-credit-card" aria-hidden="true"></span>我的钱包</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-cog" aria-hidden="true"></span>设置</a></li>
+                <li><a href="javascript:void();"><span class="fa fa-question-circle" aria-hidden="true"></span>帮助与反馈</a></li>
+                <li><a href="/loginout" ><span class="fa fa-sign-out" aria-hidden="true"></span>退出</a></li>
+            </ul>
+        </li>
+
+        <li class="writer"><a href="/writer"><span class="fa fa-pencil-square-o" aria-hidden="true"></span>写文章</a></li>
+        {{else}}
+        <li class="writer"><a href="/login">登录</a></li>
+        {{/if}}
+    </div>
+</div>

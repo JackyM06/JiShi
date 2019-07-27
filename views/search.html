@@ -1,0 +1,65 @@
+{{ extend './_layout/home.html' }}
+
+{{block 'title'}}搜索{{/block}}
+
+{{block 'body'}}
+
+{{ include './_partials/header.html'}}
+
+<div class="searchbody">
+    <!-- 左侧分类栏 -->
+    <div id="LeftTag">
+        <ul id="categories">
+            <li><a href="#"><span class="fa fa-file-text-o"></span>文章</a></li>
+            <li><a href="#"><span class="fa fa-user"></span>用户</a></li>
+            <li><a href="#"><span class="fa fa-th-large"></span>专题</a></li>
+            <li><a href="#"><span class="fa fa-files-o"></span>文集</a></li>
+        </ul>
+        <ul class="cardbox" id="leftCard">
+                <div class="front">
+                    <span>热门搜索</span>
+                    <button onclick="replace()"> <span id="log" class="fa fa-refresh" aria-hidden="true"></span>换一批</button>
+                </div>
+                <li><a href="javascript:void();">区块链</a></li>
+                <li><a href="javascript:void();">小程序</a></li>
+                <li><a href="javascript:void();">vue</a></li>
+                <li><a href="javascript:void();">毕业</a></li>
+                <li><a href="javascript:void();">PHP</a></li>
+                <li><a href="javascript:void();">故事</a></li>
+                <li><a href="javascript:void();">理财</a></li>
+                <li><a href="javascript:void();">Vlog</a></li>
+                <li><a href="javascript:void();">投稿作品</a></li>
+                <li><a href="javascript:void();">Vscode</a></li>
+                <li><a href="javascript:void();">心理</a></li>
+                <li><a href="javascript:void();">夜间睡眠</a></li>
+                <li><a href="javascript:void();">手账</a></li>
+                <li><a href="javascript:void();">姥姥的澎湖湾</a></li>
+                <li><a href="javascript:void();">显示器</a></li>
+                <li><a href="javascript:void();">软件开发</a></li>
+            </ul>
+    </div>
+    <!-- 右侧搜索结果栏 -->
+    <div class="Result">
+        <p>共查询到<span id="count">0</span>条结果</p>
+        <ul id="content" class="BlogList">
+            <li>
+                <a class="title haveImg" href="javascript:void();">八小时之外，如何自我提高？</a>
+                <span class="intrudation">
+                        焦虑和迷茫是年轻人的常态。但大部分人的焦虑只是徒增烦恼，渴望向上又好逸恶劳，焦虑万分但碌碌无为。正如所谓的“间接性踌躇满志，持续性混吃等死”。 ...
+                </span>
+                <div class="otherMessage">
+                    <a class="editor" href="javascript:void();">XMind思维导图</a>
+                    <a class="comment fa fa-comment" aria-hidden="trfue" href="javascript:void();">14</a>
+                    <span class="like fa fa-gratipay" aria-hidden="true">549</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+{{/block}}
+
+{{block 'script'}}
+<script type="text/javascript" src="/public/JavaScript/index.js"></script>
+<script type="text/javascript" src="/public/JavaScript/search.js"></script>
+{{/block}}

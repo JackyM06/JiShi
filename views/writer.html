@@ -1,0 +1,59 @@
+{{ extend './_layout/home.html'}}
+
+{{block 'title'}}写作{{/block}}
+
+{{block 'body'}}
+<div id="editorBody">
+    <div  class="classify">
+        <a id="return" href="/">回首页</a>
+        <a class="help" href="/help">遇到问题<span class="fa fa-question-circle-o"></span></a>
+    </div>
+    <div class="editorBox">
+        <div class="BlogTag">
+            <p> <span class="fa fa-list-alt" ></span> 作品列表</p>
+            <ul id="TitleList" class="TitleList">
+                {{each articles}}
+                <li name="{{ $value.id }}" onclick="EditorOpen(this)"><p><span class="Title fa fa-file"></span>{{ $value.title }}</p><button   class="fa fa-trash"></button></li>
+                {{/each}}
+            </ul>
+            <button onclick="addBlog()"><span  class="fa fa-plus"></span> 新建文章</button> <!--添加文章按钮-->
+        </div>
+        <div id="none" > 
+            <p>暂时还没有打开的文章哦ㄟ( ▔, ▔ )ㄏ</p>
+        </div>
+        <form class="editorArea" action='/writer/save' id="editorArea" method="POST">
+            <input type="hidden" name="id" id="ID" value="">
+            <input id='TITLE' type="text" name="title" class="editorTitle" value="无标题文章">
+            <div id="editorContent">
+            </div>
+            <button type="submit" id="reserve" ><span class="fa fa-folder-o"></span></button> <!--保存按钮-->
+        </form>
+        
+    </div>
+</div>
+{{/block}}
+
+
+{{ block 'script'}}
+<script src="/public/lib/etc/wangEditor.min.js"></script>
+<script>
+    var E = window.wangEditor
+    window.editor = new E('#editorContent')
+    editor.customConfig.zIndex = 0
+    editor.create()
+    var height=window.innerHeight;
+    var div=document.getElementById("editorBody");
+    div.style.height=height+"px";
+    var text=document.getElementsByClassName("w-e-text-container")[0];
+    text.style.fontSize = 17+'px';
+    text.style.height=(height-80-47)+"px";
+    let trashs=document.getElementsByClassName('fa-trash')
+    for(let key of trashs){
+        key.addEventListener("click",function(e){
+        e.stopPropagation();   //阻止冒泡事件
+        Delete();
+    });
+    }
+</script>
+<script src="/public/JavaScript/writer.js"></script>
+{{ /block }}
